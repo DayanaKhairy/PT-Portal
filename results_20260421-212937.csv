@@ -1,0 +1,134 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1776778177184,3818,T01_Login,200,"Number of samples in transaction : 1, number of failing samples : 0",Virtual Student 1-1,,true,,2892,349,1,1,null,0,596,2911
+1776778177234,3818,POST API Login,200,OK,Virtual Student 1-1,text,true,,2892,349,1,1,https://ilmu-dev.tmrnd.dev/usermgmt/v1/auth/token,3818,0,2911
+1776778181599,7568,T02_Assessment,200,"Number of samples in transaction : 5, number of failing samples : 0",Virtual Student 1-1,,true,,65916,10179,1,1,null,0,258,0
+1776778181600,1831,GET Learning Assessment Page/API,200,OK,Virtual Student 1-1,text,true,,724,2043,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/user-questionnaires/status/PERSONALIZED_LEARNING_V1,1831,0,0
+1776778183433,632,GET Questionnaire Page,200,OK,Virtual Student 1-1,text,true,,2637,2027,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/questionnaires/1,632,0,0
+1776778184066,593,POST User Questionnaire Session ID,200,OK,Virtual Student 1-1,text,true,,638,2066,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/user-questionnaires/start,593,0,0
+1776778184660,1373,GET newUserQuestionnaire Page,200,OK,Virtual Student 1-1,text,true,,650,2016,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/user-questionnaires/1131,1373,0,0
+1776778186033,3139,GET All Questions,200,OK,Virtual Student 1-1,text,true,,61267,2027,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/questionnaires/1/questions?limit=26,750,0,0
+1776778189426,39979,T03_Learning_Space,200,"Number of samples in transaction : 12, number of failing samples : 0",Virtual Student 1-1,,true,,265481,76384,1,1,null,0,37816,1592
+1776778189426,1115,GET Subscription Active,200,OK,Virtual Student 1-1,text,true,,2699,2099,1,1,https://ilmu-dev.tmrnd.dev/subscription/v1/user-subscriptions/me/active,1115,0,0
+1776778190541,1356,GET Subjects,200,OK,Virtual Student 1-1,text,true,,7897,2075,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/subjects,1095,0,0
+1776778191898,652,GET Tags,200,OK,Virtual Student 1-1,text,true,,730,2090,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/learning-resources/tags,652,0,0
+1776778192551,569,GET Tags By SubjectIds,200,OK,Virtual Student 1-1,text,true,,713,2113,1,1,"https://ilmu-dev.tmrnd.dev/learning/v1/learning-resources/tags?subjectIds=2,14,15,6,7",569,0,0
+1776778193121,595,GET Textbook Learning Resources,200,OK,Virtual Student 1-1,text,true,,1463,2148,1,1,"https://ilmu-dev.tmrnd.dev/learning/v1/learning-resources?resourceType=TEXTBOOK&subjectIds=2,14,15,6,7&limit=12&offset=0",595,0,0
+1776778193716,3484,GET Navigate TextBook,200,OK,Virtual Student 1-1,text,true,,53076,2098,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/textbooks/courses/14/navigation,1383,0,0
+1776778197201,1107,GET Learning Study Notes,200,OK,Virtual Student 1-1,text,true,,14205,2151,1,1,"https://ilmu-dev.tmrnd.dev/learning/v1/learning-resources?resourceType=STUDY_NOTES&subjectIds=2,14,15,6,7&limit=12&offset=0",730,0,0
+1776778198308,2208,GET Study Notes Details,200,OK,Virtual Student 1-1,text,true,,44568,2090,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/study-notes/3283/detail,972,0,0
+1776778200517,855,GET Flashcards,200,OK,Virtual Student 1-1,text,true,,9984,2150,1,1,"https://ilmu-dev.tmrnd.dev/learning/v1/learning-resources?resourceType=FLASHCARDS&subjectIds=2,14,15,6,7&limit=12&offset=0",711,0,0
+1776778201372,818,GET Quiz,200,OK,Virtual Student 1-1,text,true,,9608,2144,1,1,"https://ilmu-dev.tmrnd.dev/learning/v1/learning-resources?resourceType=QUIZ&subjectIds=2,14,15,6,7&limit=12&offset=0",746,0,0
+1776778202191,25669,T03A_Navigate_Quiz_And_Answer_10Q,200,"Number of samples in transaction : 25, number of failing samples : 0",Virtual Student 1-1,,true,,106245,53134,1,1,null,0,37810,1592
+1776778203694,2266,GET Quiz Detail 2808,200,OK,Virtual Student 1-1,text,true,,66630,2086,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/detail,780,0,0
+1776778207470,737,GET Quiz 2808,200,OK,Virtual Student 1-1,text,true,,1350,2079,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808,737,0,0
+1776778209709,1365,POST Start Quiz Attempt 2808,200,OK,Virtual Student 1-1,text,true,,567,2108,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/attempts,1365,0,0
+1776778212625,625,GET Quiz Item 1826,200,OK,Virtual Student 1-1,text,true,,1232,2090,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/items/1826,625,0,0
+1776778214805,1096,POST Quiz Answer 1826,200,OK,Virtual Student 1-1,text,true,,980,2175,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/attempts/554/items/1826/answer,1096,0,0
+1776778217404,656,GET Quiz Item 1827,200,OK,Virtual Student 1-1,text,true,,1304,2090,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/items/1827,656,0,0
+1776778219568,598,POST Quiz Answer 1827,200,OK,Virtual Student 1-1,text,true,,999,2175,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/attempts/554/items/1827/answer,598,0,0
+1776778221669,586,GET Quiz Item 1828,200,OK,Virtual Student 1-1,text,true,,1643,2090,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/items/1828,586,0,0
+1776778223763,611,POST Quiz Answer 1828,200,OK,Virtual Student 1-1,text,true,,966,2175,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/attempts/554/items/1828/answer,611,0,0
+1776778225876,1344,GET Quiz Item 1829,200,OK,Virtual Student 1-1,text,true,,1395,2090,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/items/1829,1344,0,0
+1776778228731,1430,POST Quiz Answer 1829,200,OK,Virtual Student 1-1,text,true,,930,2175,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/attempts/554/items/1829/answer,1430,0,0
+1776778231664,596,GET Quiz Item 1830,200,OK,Virtual Student 1-1,text,true,,1138,2090,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/items/1830,596,0,0
+1776778233771,589,POST Quiz Answer 1830,200,OK,Virtual Student 1-1,text,true,,957,2175,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/attempts/554/items/1830/answer,589,0,0
+1776778235872,723,GET Quiz Item 1831,200,OK,Virtual Student 1-1,text,true,,1446,2090,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/items/1831,722,0,0
+1776778238104,2255,POST Quiz Answer 1831,200,OK,Virtual Student 1-1,text,true,,980,2175,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/attempts/554/items/1831/answer,2255,0,1592
+1776778241871,824,GET Quiz Item 1832,200,OK,Virtual Student 1-1,text,true,,1147,2090,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/items/1832,824,0,0
+1776778244216,612,POST Quiz Answer 1832,200,OK,Virtual Student 1-1,text,true,,983,2175,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/attempts/554/items/1832/answer,612,0,0
+1776778246332,1572,GET Quiz Item 1833,200,OK,Virtual Student 1-1,text,true,,1283,2090,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/items/1833,1571,0,0
+1776778249413,606,POST Quiz Answer 1833,200,OK,Virtual Student 1-1,text,true,,931,2175,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/attempts/554/items/1833/answer,606,0,0
+1776778251526,1514,GET Quiz Item 1834,200,OK,Virtual Student 1-1,text,true,,1177,2090,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/items/1834,1514,0,0
+1776778254546,594,POST Quiz Answer 1834,200,OK,Virtual Student 1-1,text,true,,964,2175,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/attempts/554/items/1834/answer,594,0,0
+1776778256651,1004,GET Quiz Item 1835,200,OK,Virtual Student 1-1,text,true,,1351,2090,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/items/1835,1004,0,0
+1776778259156,938,POST Quiz Answer 1835,200,OK,Virtual Student 1-1,text,true,,1005,2175,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/attempts/554/items/1835/answer,938,0,0
+1776778261603,1920,GET Quiz Attempt Status 554,200,OK,Virtual Student 1-1,text,true,,14274,2092,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/attempts/554,1042,0,0
+1776778265048,608,POST Submit Quiz Attempt 554,200,OK,Virtual Student 1-1,text,true,,613,2119,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/attempts/554/submit,608,0,0
+1776778265670,1551,GET Quiz Attempt Result 554,200,OK,Virtual Student 1-1,text,true,,14293,2092,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/attempts/554,1119,0,0
+1776778267223,15824,T04_AI_Tutor_WebSocket,Sampler error: unexpected frame type (close).,"Number of samples in transaction : 86, number of failing samples : 7",Virtual Student 1-1,,false,,4440,5491,1,1,null,0,35065,3213
+1776778267630,549,GET AI Tutor Socket Init,200,OK,Virtual Student 1-1,text,true,,438,300,1,1,https://ilmu-dev.tmrnd.dev/ai-tutor/socket.io/?EIO=4&transport=polling&t=fde1908e-88c4-4557-95fc-b02f1f2ebfe7,549,0,0
+1776778268584,624,POST AI Tutor Socket Auth,200,OK,Virtual Student 1-1,text,true,,304,2140,1,1,https://ilmu-dev.tmrnd.dev/ai-tutor/socket.io/?EIO=4&transport=polling&t=766eeea9-2f3a-4588-b747-9ee8cdfc0452&sid=1guK9JkztGPhwqEMAAAj,624,0,0
+1776778269619,527,GET AI Tutor Socket Namespace Ack,200,OK,Virtual Student 1-1,text,true,,361,325,1,1,https://ilmu-dev.tmrnd.dev/ai-tutor/socket.io/?EIO=4&transport=polling&t=e583bf0e-c86b-4bad-b80e-9f8d78f41f30&sid=1guK9JkztGPhwqEMAAAj,527,0,0
+1776778270553,3213,WS Open AI Tutor Connection,101,Switching Protocols,Virtual Student 1-1,,true,,319,372,1,1,null,0,0,3213
+1776778274183,561,WS Engine.IO Probe,200,OK,Virtual Student 1-1,text,true,,8,12,1,1,null,0,0,0
+1776778275147,0,WS Engine.IO Upgrade,200,OK,Virtual Student 1-1,,true,,0,7,1,1,null,0,0,0
+1776778275548,11,Init AI Verification Counter,200,OK,Virtual Student 1-1,text,true,,0,0,1,1,null,0,0,0
+1776778275967,0,WS Send Sejarah Question,200,OK,Virtual Student 1-1,,true,,0,171,1,1,null,0,0,0
+1776778276380,41,Log Sejarah Question Sent,200,OK,Virtual Student 1-1,text,true,,0,0,1,1,null,0,0,0
+1776778276831,2,WS Read AI Tutor Chunk,200,OK,Virtual Student 1-1,text,true,,164,0,1,1,null,0,0,0
+1776778277235,802,WS Read AI Tutor Chunk,No response,"Read timeout, no response received.",Virtual Student 1-1,,true,,0,0,1,1,null,0,0,0
+1776778278439,809,WS Read AI Tutor Chunk,No response,"Read timeout, no response received.",Virtual Student 1-1,,true,,0,0,1,1,null,0,0,0
+1776778279650,802,WS Read AI Tutor Chunk,No response,"Read timeout, no response received.",Virtual Student 1-1,,true,,0,0,1,1,null,0,0,0
+1776778280854,806,WS Read AI Tutor Chunk,No response,"Read timeout, no response received.",Virtual Student 1-1,,true,,0,0,1,1,null,0,0,0
+1776778282069,805,WS Read AI Tutor Chunk,No response,"Read timeout, no response received.",Virtual Student 1-1,,true,,0,0,1,1,null,0,0,0
+1776778283283,809,WS Read AI Tutor Chunk,No response,"Read timeout, no response received.",Virtual Student 1-1,,true,,0,0,1,1,null,0,0,0
+1776778284498,800,WS Read AI Tutor Chunk,No response,"Read timeout, no response received.",Virtual Student 1-1,,true,,0,0,1,1,null,0,0,0
+1776778285700,0,WS Send Sejarah Question,200,OK,Virtual Student 1-1,,true,,0,162,1,1,null,0,0,0
+1776778286104,1,Log Sejarah Question Sent,200,OK,Virtual Student 1-1,text,true,,0,0,1,1,null,0,0,0
+1776778286516,0,WS Send Sejarah Question,200,OK,Virtual Student 1-1,,true,,0,177,1,1,null,0,0,0
+1776778286932,2,Log Sejarah Question Sent,200,OK,Virtual Student 1-1,text,true,,0,0,1,1,null,0,0,0
+1776778287337,0,WS Send Sejarah Question,200,OK,Virtual Student 1-1,,true,,0,169,1,1,null,0,0,0
+1776778287770,0,Log Sejarah Question Sent,200,OK,Virtual Student 1-1,text,true,,0,0,1,1,null,0,0,0
+1776778288179,1,WS Send Sejarah Question,200,OK,Virtual Student 1-1,,true,,0,168,1,1,null,0,0,0
+1776778288588,0,Log Sejarah Question Sent,200,OK,Virtual Student 1-1,text,true,,0,0,1,1,null,0,0,0
+1776778289001,24,Verify 5 Sejarah Questions Sent,200,Verified 5 Sejarah questions sent,Virtual Student 1-1,text,true,,99,0,1,1,null,0,0,0
+1776778289426,12,Initialize Math Question Counter,200,OK,Virtual Student 1-1,text,true,,0,0,1,1,null,0,0,0
+1776778289850,0,WS Send Math Question,200,OK,Virtual Student 1-1,,true,,0,107,1,1,null,0,0,0
+1776778290252,13,Log Math Question Sent,200,OK,Virtual Student 1-1,text,true,,0,0,1,1,null,0,0,0
+1776778290668,0,WS Read Math AI Tutor Chunk,200,OK,Virtual Student 1-1,text,true,,164,0,1,1,null,0,0,0
+1776778291073,0,WS Read Math AI Tutor Chunk,200,OK,Virtual Student 1-1,text,true,,164,0,1,1,null,0,0,0
+1776778291484,1,WS Read Math AI Tutor Chunk,200,OK,Virtual Student 1-1,text,true,,164,0,1,1,null,0,0,0
+1776778291900,0,WS Read Math AI Tutor Chunk,200,OK,Virtual Student 1-1,text,true,,164,0,1,1,null,0,0,0
+1776778292310,0,WS Read Math AI Tutor Chunk,200,OK,Virtual Student 1-1,text,true,,164,0,1,1,null,0,0,0
+1776778292729,437,WS Read Math AI Tutor Chunk,200,OK,Virtual Student 1-1,text,true,,3,0,1,1,null,0,0,0
+1776778293572,813,WS Read Math AI Tutor Chunk,No response,"Read timeout, no response received.",Virtual Student 1-1,,true,,0,0,1,1,null,0,0,0
+1776778294789,813,WS Read Math AI Tutor Chunk,No response,"Read timeout, no response received.",Virtual Student 1-1,,true,,0,0,1,1,null,0,0,0
+1776778296003,0,WS Send Math Question,200,OK,Virtual Student 1-1,,true,,0,118,1,1,null,0,0,0
+1776778296403,1,Log Math Question Sent,200,OK,Virtual Student 1-1,text,true,,0,0,1,1,null,0,0,0
+1776778296805,1,WS Send Math Question,200,OK,Virtual Student 1-1,,true,,0,154,1,1,null,0,0,0
+1776778297208,1,Log Math Question Sent,200,OK,Virtual Student 1-1,text,true,,0,0,1,1,null,0,0,0
+1776778297621,1,WS Send Math Question,200,OK,Virtual Student 1-1,,true,,0,128,1,1,null,0,0,0
+1776778298024,2,Log Math Question Sent,200,OK,Virtual Student 1-1,text,true,,0,0,1,1,null,0,0,0
+1776778298433,0,WS Send Math Question,200,OK,Virtual Student 1-1,,true,,0,114,1,1,null,0,0,0
+1776778298849,1,Log Math Question Sent,200,OK,Virtual Student 1-1,text,true,,0,0,1,1,null,0,0,0
+1776778299263,25,Verify 5 Math Questions Sent,200,Verified 5 Math questions sent,Virtual Student 1-1,text,true,,96,0,1,1,null,0,0,0
+1776778299698,20,Initialize BM Question Counter,200,OK,Virtual Student 1-1,text,true,,0,0,1,1,null,0,0,0
+1776778300131,1,WS Send BM Question,200,OK,Virtual Student 1-1,,true,,0,139,1,1,null,0,0,0
+1776778300547,20,Log BM Question Sent,200,OK,Virtual Student 1-1,text,true,,0,0,1,1,null,0,0,0
+1776778300980,1,WS Read BM AI Tutor Chunk,200,OK,Virtual Student 1-1,text,true,,164,0,1,1,null,0,0,0
+1776778301395,0,WS Read BM AI Tutor Chunk,200,OK,Virtual Student 1-1,text,true,,164,0,1,1,null,0,0,0
+1776778301798,0,WS Read BM AI Tutor Chunk,200,OK,Virtual Student 1-1,text,true,,164,0,1,1,null,0,0,0
+1776778302216,0,WS Read BM AI Tutor Chunk,200,OK,Virtual Student 1-1,text,true,,164,0,1,1,null,0,0,0
+1776778302630,0,WS Read BM AI Tutor Chunk,200,OK,Virtual Student 1-1,text,true,,164,0,1,1,null,0,0,0
+1776778303046,802,WS Read BM AI Tutor Chunk,No response,"Read timeout, no response received.",Virtual Student 1-1,,true,,0,0,1,1,null,0,0,0
+1776778304251,801,WS Read BM AI Tutor Chunk,No response,"Read timeout, no response received.",Virtual Student 1-1,,true,,0,0,1,1,null,0,0,0
+1776778305463,802,WS Read BM AI Tutor Chunk,No response,"Read timeout, no response received.",Virtual Student 1-1,,true,,0,0,1,1,null,0,0,0
+1776778306675,0,WS Send BM Question,200,OK,Virtual Student 1-1,,true,,0,139,1,1,null,0,0,0
+1776778307082,1,Log BM Question Sent,200,OK,Virtual Student 1-1,text,true,,0,0,1,1,null,0,0,0
+1776778307487,0,WS Send BM Question,200,OK,Virtual Student 1-1,,true,,0,149,1,1,null,0,0,0
+1776778307899,2,Log BM Question Sent,200,OK,Virtual Student 1-1,text,true,,0,0,1,1,null,0,0,0
+1776778308303,0,WS Send BM Question,200,OK,Virtual Student 1-1,,true,,0,145,1,1,null,0,0,0
+1776778308704,0,Log BM Question Sent,200,OK,Virtual Student 1-1,text,true,,0,0,1,1,null,0,0,0
+1776778309120,0,WS Send BM Question,200,OK,Virtual Student 1-1,,true,,0,145,1,1,null,0,0,0
+1776778309533,1,Log BM Question Sent,200,OK,Virtual Student 1-1,text,true,,0,0,1,1,null,0,0,0
+1776778309939,22,Verify 5 BM Questions Sent,200,Verified 5 BM questions sent,Virtual Student 1-1,text,true,,94,0,1,1,null,0,0,0
+1776778310362,8,Initialize BI Question Counter,200,OK,Virtual Student 1-1,text,true,,0,0,1,1,null,0,0,0
+1776778310771,1,WS Send BI Question,200,OK,Virtual Student 1-1,,true,,0,150,1,1,null,0,0,0
+1776778311183,14,Log BI Question Sent,200,OK,Virtual Student 1-1,text,true,,0,0,1,1,null,0,0,0
+1776778311600,0,WS Read BI AI Tutor Chunk,200,OK,Virtual Student 1-1,text,true,,164,0,1,1,null,0,0,0
+1776778312001,0,WS Read BI AI Tutor Chunk,200,OK,Virtual Student 1-1,text,true,,164,0,1,1,null,0,0,0
+1776778312401,0,WS Read BI AI Tutor Chunk,200,OK,Virtual Student 1-1,text,true,,164,0,1,1,null,0,0,0
+1776778312803,0,WS Read BI AI Tutor Chunk,200,OK,Virtual Student 1-1,text,true,,164,0,1,1,null,0,0,0
+1776778313217,0,WS Read BI AI Tutor Chunk,200,OK,Virtual Student 1-1,text,true,,164,0,1,1,null,0,0,0
+1776778313621,1,WS Read BI AI Tutor Chunk,Sampler error: unexpected frame type (close).,Received: Close frame with status code null and close reason 'null',Virtual Student 1-1,,false,,0,0,1,1,null,0,0,0
+0,0,WS Read BI AI Tutor Chunk,Sampler error,"Sampler configured for using existing connection, but there is no connection",Virtual Student 1-1,,false,,0,0,1,1,null,0,0,0
+0,0,WS Read BI AI Tutor Chunk,Sampler error,"Sampler configured for using existing connection, but there is no connection",Virtual Student 1-1,,false,,0,0,1,1,null,0,0,0
+0,0,WS Send BI Question,Sampler error,"Sampler configured for using existing connection, but there is no connection",Virtual Student 1-1,,false,,0,0,1,1,null,0,0,0
+1776778315249,1,Log BI Question Sent,200,OK,Virtual Student 1-1,text,true,,0,0,1,1,null,0,0,0
+0,0,WS Send BI Question,Sampler error,"Sampler configured for using existing connection, but there is no connection",Virtual Student 1-1,,false,,0,0,1,1,null,0,0,0
+1776778316054,1,Log BI Question Sent,200,OK,Virtual Student 1-1,text,true,,0,0,1,1,null,0,0,0
+0,0,WS Send BI Question,Sampler error,"Sampler configured for using existing connection, but there is no connection",Virtual Student 1-1,,false,,0,0,1,1,null,0,0,0
+1776778316872,1,Log BI Question Sent,200,OK,Virtual Student 1-1,text,true,,0,0,1,1,null,0,0,0
+0,0,WS Send BI Question,Sampler error,"Sampler configured for using existing connection, but there is no connection",Virtual Student 1-1,,false,,0,0,1,1,null,0,0,0
+1776778317686,1,Log BI Question Sent,200,OK,Virtual Student 1-1,text,true,,0,0,1,1,null,0,0,0
+1776778318099,13,Verify 5 BI Questions Sent,200,Verified 5 BI questions sent,Virtual Student 1-1,text,true,,94,0,1,1,null,0,0,0

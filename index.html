@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Performance Testing Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --secondary: #64748b;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --bg-dark: #0f172a;
+      --bg-card: #1e293b;
+      --bg-hover: #334155;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --border: #334155;
+      --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2rem;
+      border-radius: 12px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .logo i {
+      font-size: 1.5rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    nav a {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: all 0.2s;
+      font-weight: 500;
+      font-size: 0.875rem;
+    }
+
+    nav a:hover, nav a.active {
+      background: var(--bg-hover);
+      color: var(--text-primary);
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .hero h1 {
+      font-size: 2.75rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      color: var(--text-secondary);
+      font-size: 1.125rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Sections */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    /* Project Grid */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary);
+      box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+    }
+
+    .project-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .project-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--gradient);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-desc {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .project-meta {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .meta-item i {
+      font-size: 0.75rem;
+    }
+
+    .project-actions {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      display: flex;
+      gap: 0.5rem;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .project-card:hover .project-actions {
+      opacity: 1;
+    }
+
+    .action-btn {
+      background: var(--bg-hover);
+      border: none;
+      color: var(--text-secondary);
+      padding: 0.375rem 0.625rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.75rem;
+      transition: all 0.2s;
+    }
+
+    .action-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    .action-btn.danger:hover {
+      background: var(--danger);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.625rem 1.25rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--gradient);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+    }
+
+    .btn-secondary {
+      background: var(--bg-hover);
+      color: var(--text-primary);
+    }
+
+    .btn-secondary:hover {
+      background: var(--border);
+    }
+
+    .btn i { font-size: 0.875rem; }
+
+    /* Stats */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .stat-label {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+    }
+
+    /* JMeter Runner Page */
+    .runner-container {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 1.5rem;
+    }
+
+    .sidebar {
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      height: fit-content;
+      position: sticky;
+      top: 2rem;
+    }
+
+    .sidebar-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .file-browser {
+      margin-bottom: 1.5rem;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.75rem;
+    }
+
+    .breadcrumb button {
+      background: none;
+      border: none;
+      color: var(--primary);
+      cursor: pointer;
+      padding: 0;
+      font-size: 0.875rem;
+    }
+
+    .breadcrumb button:hover {
+      text-decoration: underline;
+    }
+
+    .file-list {
+      max-height: 300px;
+      overflow-y: auto;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .file-item {
+      padding: 0.625rem 0.875rem;
+      cursor: pointer;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.875rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.2s;
+    }
+
+    .file-item:last-child {
+      border-bottom: none;
+    }
+
+    .file-item:hover {
+      background: var(--bg-hover);
+    }
+
+    .file-item.selected {
+      background: rgba(59, 130, 246, 0.15);
+      color: var(--primary);
+    }
+
+    .file-item .file-name {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .file-item .file-size {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+
+    .file-item .delete-btn {
+      opacity: 0;
+      background: none;
+      border: none;
+      color: var(--danger);
+      cursor: pointer;
+      padding: 0.25rem;
+      font-size: 0.75rem;
+      transition: opacity 0.2s;
+    }
+
+    .file-item:hover .delete-btn {
+      opacity: 1;
+    }
+
+    .form-section {
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+    }
+
+    label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    input, select {
+      padding: 0.625rem 0.875rem;
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-size: 0.875rem;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .tag {
+      background: var(--bg-hover);
+      padding: 0.25rem 0.625rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      cursor: pointer;
+    }
+
+    .tag:hover {
+      background: var(--danger);
+    }
+
+    .output-panel {
+      background: #0d1117;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .output-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.875rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .output-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    .output-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .icon-btn {
+      background: var(--bg-hover);
+      border: none;
+      color: var(--text-secondary);
+      padding: 0.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .icon-btn:hover {
+      background: var(--border);
+      color: var(--text-primary);
+    }
+
+    #output {
+      padding: 1.25rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      line-height: 1.6;
+      color: #e6edf3;
+      white-space: pre-wrap;
+      max-height: 600px;
+      overflow-y: auto;
+    }
+
+    .output-line {
+      margin-bottom: 0.25rem;
+    }
+
+    .timestamp {
+      color: var(--text-secondary);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.875rem;
+      margin-bottom: 1rem;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover {
+      color: var(--primary);
+    }
+
+    /* Status Badge */
+    .status-badge {
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .status-idle { background: var(--bg-hover); color: var(--text-secondary); }
+    .status-running { background: rgba(245, 158, 11, 0.2); color: var(--warning); }
+    .status-success { background: rgba(16, 185, 129, 0.2); color: var(--success); }
+    .status-error { background: rgba(239, 68, 68, 0.2); color: var(--danger); }
+
+    /* Upload Area */
+    .upload-area {
+      border: 2px dashed var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: 1rem;
+    }
+
+    .upload-area:hover, .upload-area.dragover {
+      border-color: var(--primary);
+      background: rgba(59, 130, 246, 0.05);
+    }
+
+    .upload-area i {
+      font-size: 2rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .upload-area p {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal {
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: 2rem;
+      width: 90%;
+      max-width: 500px;
+      border: 1px solid var(--border);
+      transform: scale(0.9);
+      transition: transform 0.2s;
+    }
+
+    .modal-overlay.active .modal {
+      transform: scale(1);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 1.25rem;
+      padding: 0.25rem;
+    }
+
+    .modal-close:hover {
+      color: var(--text-primary);
+    }
+
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    /* Toast Notifications */
+    .toast-container {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 2000;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .toast {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      min-width: 300px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      animation: slideIn 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .toast.success { border-left: 4px solid var(--success); }
+    .toast.error { border-left: 4px solid var(--danger); }
+    .toast.warning { border-left: 4px solid var(--warning); }
+
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    /* Tests List in Project Card (compact view) */
+    .tests-preview {
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .tests-preview-title {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .test-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.875rem;
+      padding: 0.25rem 0;
+      color: var(--text-secondary);
+    }
+
+    .test-item .test-name {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+    }
+
+    .test-item .test-actions {
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .test-item:hover .test-actions {
+      opacity: 1;
+    }
+
+    /* Utilities */
+    .hidden { display: none !important; }
+    .flex { display: flex; }
+    .items-center { align-items: center; }
+    .justify-between { justify-content: space-between; }
+    .gap-2 { gap: 0.5rem; }
+    .gap-4 { gap: 1rem; }
+    .mt-4 { margin-top: 1rem; }
+    .mb-4 { margin-bottom: 1rem; }
+    .text-sm { font-size: 0.875rem; }
+    .text-secondary { color: var(--text-secondary); }
+    .font-medium { font-weight: 500; }
+    .w-full { width: 100%; }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-secondary);
+    }
+
+    .empty-state i {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .runner-container {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        position: static;
+      }
+      .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .project-actions {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <i class="fas fa-chart-line"></i>
+        <span>Performance Testing Portal</span>
+      </div>
+      <nav>
+        <a href="/" class="active">Projects</a>
+        <a href="#" onclick="openConfigModal()" title="JMeter Settings">
+          <i class="fas fa-cog"></i> Settings
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Landing Page -->
+      <div id="landing-page">
+      <div class="hero">
+        <h1>Performance Testing Hub</h1>
+        <p>Run automated load tests, analyze performance metrics, and ensure your applications scale under pressure.</p>
+      </div>
+
+      <!-- JMeter Warning Banner -->
+      <div id="jmeter-warning" class="hidden" style="
+        background: rgba(245, 158, 11, 0.1);
+        border: 1px solid var(--warning);
+        border-left: 4px solid var(--warning);
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      ">
+        <i class="fas fa-exclamation-triangle" style="color: var(--warning); font-size: 1.5rem;"></i>
+        <div>
+          <strong>JMeter Not Configured</strong>
+          <p style="font-size: 0.875rem; margin-top: 0.25rem;">
+            JMeter is not installed or not in PATH. Go to <a href="#" onclick="openConfigModal()" style="color: var(--primary);">Settings</a> to configure.
+          </p>
+        </div>
+      </div>
+
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-value" id="total-tests">0</div>
+            <div class="stat-label">Total Tests</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="total-projects">0</div>
+            <div class="stat-label">Projects</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="avg-response">0ms</div>
+            <div class="stat-label">Avg Response</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="success-rate">0%</div>
+            <div class="stat-label">Success Rate</div>
+          </div>
+        </div>
+
+        <div class="section-header">
+          <h2 class="section-title">Projects</h2>
+          <div class="flex gap-2">
+            <button class="btn btn-secondary" onclick="refreshProjects()">
+              <i class="fas fa-sync"></i> Refresh
+            </button>
+            <button class="btn btn-primary" onclick="openCreateProjectModal()">
+              <i class="fas fa-plus"></i> New Project
+            </button>
+          </div>
+        </div>
+
+        <div class="project-grid" id="project-grid">
+          <!-- Projects rendered here -->
+        </div>
+      </div>
+
+      <!-- JMeter Runner Page -->
+      <div id="runner-page" class="hidden">
+        <a href="/" class="back-link">
+          <i class="fas fa-arrow-left"></i> Back to Projects
+        </a>
+
+        <div class="section-header">
+          <h2 class="section-title" id="runner-title">Performance Test</h2>
+          <div class="flex gap-2">
+            <span class="status-badge status-idle" id="status-badge">Idle</span>
+          </div>
+        </div>
+
+        <div class="runner-container">
+          <!-- Sidebar: File Browser -->
+          <aside class="sidebar">
+            <div class="sidebar-title">Test Files</div>
+            
+            <!-- Upload Section -->
+            <div class="mb-4">
+              <div class="upload-area" id="upload-area" onclick="document.getElementById('file-input').click()">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p><strong>Click to upload</strong><br>or drag and drop</p>
+                <p class="text-sm">.jmx files only</p>
+              </div>
+              <input type="file" id="file-input" accept=".jmx" style="display: none;" onchange="handleFileUpload(event)">
+            </div>
+
+            <!-- File Browser -->
+            <div class="file-browser">
+              <div class="breadcrumb">
+                <button onclick="changeDir('..')"><i class="fas fa-arrow-up"></i></button>
+                <span id="current-dir">/</span>
+              </div>
+              <div class="file-list" id="file-list">
+                <div class="file-item">Loading...</div>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Main Panel -->
+          <div>
+            <div class="form-section">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="jmx-path">Selected Test File</label>
+                  <input type="text" id="jmx-path" placeholder="Select a .jmx file" readonly />
+                </div>
+                <div class="form-group">
+                  <label for="threads">Threads (Users)</label>
+                  <input type="number" id="threads" value="10" min="1" />
+                </div>
+                <div class="form-group">
+                  <label for="ramp">Ramp-up (seconds)</label>
+                  <input type="number" id="ramp" value="30" min="0" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Extra JMeter Arguments</label>
+                <div class="flex gap-2">
+                  <input type="text" id="extra-arg" placeholder="e.g., -l results.jtl" />
+                  <button class="btn btn-secondary" onclick="addExtraArg()">Add</button>
+                </div>
+                <div class="tags-container" id="extra-args-tags"></div>
+              </div>
+               <div class="mt-4">
+                <div class="flex gap-2">
+                  <button class="btn btn-primary" id="run-btn" onclick="runTest()">
+                    <i class="fas fa-play"></i> Run Test
+                  </button>
+                  <button class="btn btn-secondary" id="stop-btn" onclick="stopTest()" style="display: none; background: var(--danger); border-color: var(--danger);">
+                    <i class="fas fa-stop"></i> Stop
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="output-panel">
+              <div class="output-header">
+                <span class="output-title">Console Output</span>
+                <div class="output-actions">
+                  <button class="icon-btn" onclick="clearOutput()" title="Clear">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                  <button class="icon-btn" onclick="copyOutput()" title="Copy">
+                    <i class="fas fa-copy"></i>
+                  </button>
+                </div>
+              </div>
+              <div id="output"><span class="text-secondary">Ready to run tests...</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Create Project Modal -->
+  <div class="modal-overlay" id="create-project-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title">Create New Project</h3>
+        <button class="modal-close" onclick="closeModal('create-project-modal')">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="project-name">Project Name</label>
+          <input type="text" id="project-name" placeholder="e.g., API Performance Tests" />
+        </div>
+        <div class="form-group mt-4">
+          <label for="project-desc">Description (optional)</label>
+          <input type="text" id="project-desc" placeholder="Brief description of this project" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal('create-project-modal')">Cancel</button>
+        <button class="btn btn-primary" onclick="createProject()">Create Project</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div class="modal-overlay" id="delete-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title">Confirm Delete</h3>
+        <button class="modal-close" onclick="closeModal('delete-modal')">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p id="delete-message">Are you sure you want to delete this?</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal('delete-modal')">Cancel</button>
+        <button class="btn btn-primary" style="background: var(--danger);" onclick="confirmDelete()">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Config Modal -->
+  <div class="modal-overlay" id="config-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title">JMeter Configuration</h3>
+        <button class="modal-close" onclick="closeModal('config-modal')">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="jmeter-path">JMeter Path</label>
+          <input type="text" id="jmeter-path" placeholder="e.g., C:\apache-jmeter-5.6.3\bin\jmeter.bat or just 'jmeter' if in PATH" />
+          <small class="text-secondary" style="display: block; margin-top: 0.5rem;">
+            Leave as 'jmeter' if JMeter is in your system PATH. Otherwise, provide the full path to jmeter.bat (Windows) or jmeter (Linux/Mac).
+          </small>
+        </div>
+        
+        <div class="form-group mt-4">
+          <label>JMeter Status</label>
+          <div id="jmeter-status">
+            <span class="text-secondary">Checking...</span>
+          </div>
+        </div>
+
+        <div class="form-group mt-4">
+          <label for="jmeter-options">Additional JMeter Options</label>
+          <input type="text" id="jmeter-options" placeholder="e.g., -Xms512m -Xmx1024m" />
+          <small class="text-secondary" style="display: block; margin-top: 0.5rem;">
+            Optional JVM arguments like memory settings (-Xms, -Xmx)
+          </small>
+        </div>
+
+        <div id="restart-notice" class="hidden" style="
+          background: rgba(245, 158, 11, 0.1);
+          border: 1px solid var(--warning);
+          padding: 0.75rem;
+          border-radius: 6px;
+          margin-top: 1rem;
+          font-size: 0.875rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        ">
+          <i class="fas fa-exclamation-triangle" style="color: var(--warning);"></i>
+          <span>Configuration changed. Restart required to apply changes.</span>
+        </div>
+        
+        <div id="manual-restart" class="hidden" style="
+          background: rgba(239, 68, 68, 0.1);
+          border: 1px solid var(--danger);
+          padding: 0.75rem;
+          border-radius: 6px;
+          margin-top: 0.75rem;
+          font-size: 0.875rem;
+        ">
+          <strong style="color: var(--danger);">Automatic restart failed.</strong><br>
+          Please restart manually:
+          <ol style="margin: 0.5rem 0 0 1.2rem; padding: 0;">
+            <li>Go to terminal running the server</li>
+            <li>Press <code style="background: var(--bg-hover); padding: 0.125rem 0.375rem; border-radius: 3px;">Ctrl+C</code></li>
+            <li>Run: <code style="background: var(--bg-hover); padding: 0.125rem 0.375rem; border-radius: 3px;">npm start</code></li>
+          </ol>
+          <button class="btn btn-secondary" style="margin-top: 0.5rem; padding: 0.25rem 0.75rem; font-size: 0.75rem;" onclick="copyManualInstructions()">
+            Copy Instructions
+          </button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal('config-modal')">Cancel</button>
+        <button class="btn btn-primary" onclick="saveConfig()">Save</button>
+        <button class="btn btn-secondary" id="restart-btn" onclick="attemptRestart()" style="display: none;">
+          <i class="fas fa-redo"></i> Restart Now
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script>
+    // State
+    let projects = [];
+    let currentProject = null;
+    let currentDir = '.';
+    let selectedFile = '';
+    let extraArgs = [];
+    let isRunning = false;
+    let deleteTarget = null;
+
+    // Load data
+    async function loadData() {
+      try {
+        const [projectsRes, statsRes] = await Promise.all([
+          fetch('/api/projects'),
+          fetch('/api/stats')
+        ]);
+        projects = projectsRes.ok ? await projectsRes.json() : [];
+        const stats = statsRes.ok ? await statsRes.json() : {};
+
+        document.getElementById('total-projects').textContent = stats.totalProjects || projects.length;
+        document.getElementById('total-tests').textContent = stats.totalTests || 0;
+        document.getElementById('avg-response').textContent = (stats.avgResponse || 0) + 'ms';
+        document.getElementById('success-rate').textContent = (stats.successRate || 0) + '%';
+
+        renderProjects();
+      } catch (err) {
+        console.error('Failed to load data:', err);
+      }
+    }
+
+    function renderProjects() {
+      const grid = document.getElementById('project-grid');
+      
+      if (projects.length === 0) {
+        grid.innerHTML = `
+          <div class="empty-state" style="grid-column: 1 / -1">
+            <i class="fas fa-folder-open"></i>
+            <p>No projects found. Create your first project to get started!</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = projects.map(p => `
+        <div class="project-card" onclick="openProject('${p.id}')">
+          <div class="project-actions" onclick="event.stopPropagation()">
+            <button class="action-btn" onclick="openUploadModal('${p.id}')" title="Upload JMX">
+              <i class="fas fa-upload"></i>
+            </button>
+            <button class="action-btn danger" onclick="deleteProject('${p.id}')" title="Delete Project">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+          <div class="project-icon">
+            <i class="fas fa-${p.icon || 'folder'}"></i>
+          </div>
+          <div class="project-title">${p.name}</div>
+          <div class="project-desc">${p.description || 'Performance testing project'}</div>
+          <div class="project-meta">
+            <div class="meta-item">
+              <i class="fas fa-file-code"></i>
+              <span>${p.tests?.length || 0} test${p.tests?.length !== 1 ? 's' : ''}</span>
+            </div>
+            <div class="meta-item">
+              <i class="fas fa-clock"></i>
+              <span>${p.lastRun || 'Never'}</span>
+            </div>
+          </div>
+          ${p.tests && p.tests.length > 0 ? `
+            <div class="tests-preview">
+              <div class="tests-preview-title">Tests</div>
+              ${p.tests.slice(0, 3).map(t => `
+                <div class="test-item">
+                  <span class="test-name">
+                    <i class="fas fa-play-circle" style="font-size: 0.625rem;"></i>
+                    ${t}
+                  </span>
+                </div>
+              `).join('')}
+              ${p.tests.length > 3 ? `<div class="test-item text-secondary text-sm">+${p.tests.length - 3} more</div>` : ''}
+            </div>
+          ` : ''}
+        </div>
+      `).join('');
+    }
+
+    function openProject(projectId) {
+      currentProject = projects.find(p => p.id === projectId);
+      if (!currentProject) return;
+
+      document.getElementById('landing-page').classList.add('hidden');
+      document.getElementById('runner-page').classList.remove('hidden');
+      document.getElementById('runner-title').textContent = currentProject.name;
+
+      currentDir = currentProject.path || '.';
+      selectedFile = '';
+      document.getElementById('jmx-path').value = '';
+      loadFiles(currentDir);
+    }
+
+    async function loadFiles(dir) {
+      try {
+        const res = await fetch(`/list-jmx?dir=${encodeURIComponent(dir)}`);
+        const data = await res.json();
+
+        if (res.ok) {
+          currentDir = dir;
+          document.getElementById('current-dir').textContent = dir;
+          renderFileList(data.files);
+        } else {
+          showToast(data.error || 'Failed to load files', 'error');
+        }
+      } catch (err) {
+        showToast('Network error while loading files', 'error');
+      }
+    }
+
+    function renderFileList(files) {
+      const list = document.getElementById('file-list');
+      if (!files || files.length === 0) {
+        list.innerHTML = '<div class="empty-state"><i class="fas fa-inbox"></i><p>No JMX files</p></div>';
+        return;
+      }
+
+      list.innerHTML = files.map(f => `
+        <div class="file-item ${selectedFile === f.path ? 'selected' : ''}" onclick="selectFile('${f.path}')">
+          <div class="file-name">
+            <i class="fas fa-file-code"></i>
+            <span>${f.name}</span>
+          </div>
+          <div class="file-size">${formatSize(f.size)}</div>
+          <button class="delete-btn" onclick="deleteFile('${f.path}', event)" title="Delete">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      `).join('');
+    }
+
+    function formatSize(bytes) {
+      if (bytes < 1024) return bytes + ' B';
+      if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+      return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+    }
+
+    function selectFile(file) {
+      selectedFile = file;
+      document.getElementById('jmx-path').value = file;
+      renderFileList(getCurrentFiles());
+    }
+
+    function getCurrentFiles() {
+      // Return cached or re-fetch
+      return [];
+    }
+
+    function changeDir(dir) {
+      const newDir = pathJoin(currentDir, dir);
+      loadFiles(newDir);
+    }
+
+    function pathJoin(a, b) {
+      const parts = a.split('/').filter(Boolean);
+      if (b === '..') parts.pop();
+      else if (b && b !== '.') parts.push(b);
+      return '/' + parts.join('/') || '.';
+    }
+
+    // File Upload
+    const uploadArea = document.getElementById('upload-area');
+
+    uploadArea.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadArea.classList.add('dragover');
+    });
+
+    uploadArea.addEventListener('dragleave', () => {
+      uploadArea.classList.remove('dragover');
+    });
+
+    uploadArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+      const files = e.dataTransfer.files;
+      handleFiles(files);
+    });
+
+    async function handleFileUpload(event) {
+      const files = event.target.files;
+      await handleFiles(files);
+    }
+
+    async function handleFiles(files) {
+      if (!currentProject) {
+        showToast('Please select a project first', 'error');
+        return;
+      }
+
+      const formData = new FormData();
+      for (let file of files) {
+        if (!file.name.endsWith('.jmx')) {
+          showToast(`Only .jmx files allowed: ${file.name}`, 'error');
+          continue;
+        }
+        formData.append('file', file);
+      }
+
+      try {
+        const response = await fetch(`/api/projects/${currentProject.id}/upload`, {
+          method: 'POST',
+          body: formData
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          showToast(`Uploaded: ${result.file}`, 'success');
+          loadFiles(currentDir);
+          loadData(); // Refresh project stats
+        } else {
+          showToast(result.error || 'Upload failed', 'error');
+        }
+      } catch (err) {
+        showToast('Network error during upload', 'error');
+      }
+    }
+
+    // Extra args
+    function addExtraArg() {
+      const input = document.getElementById('extra-arg');
+      const val = input.value.trim();
+      if (val && !extraArgs.includes(val)) {
+        extraArgs.push(val);
+        input.value = '';
+        renderExtraArgs();
+      }
+    }
+
+    function renderExtraArgs() {
+      const container = document.getElementById('extra-args-tags');
+      container.innerHTML = extraArgs.map(arg => `
+        <span class="tag" onclick="removeExtraArg('${escape(arg)}')">
+          ${arg} <i class="fas fa-times"></i>
+        </span>
+      `).join('');
+    }
+
+    function escape(str) {
+      return str.replace(/'/g, "\\'").replace(/"/g, '\\"');
+    }
+
+    function removeExtraArg(arg) {
+      extraArgs = extraArgs.filter(a => a !== arg);
+      renderExtraArgs();
+    }
+
+     // Run test
+     async function runTest() {
+       if (isRunning) return;
+
+       const jmxPath = document.getElementById('jmx-path').value.trim();
+       const threads = parseInt(document.getElementById('threads').value) || 1;
+       const ramp = parseInt(document.getElementById('ramp').value) || 1;
+
+       if (!jmxPath) {
+         showToast('Please select a JMX file', 'error');
+         return;
+       }
+
+       isRunning = true;
+       
+       // Toggle buttons
+       const runBtn = document.getElementById('run-btn');
+       const stopBtn = document.getElementById('stop-btn');
+       runBtn.style.display = 'none';
+       stopBtn.style.display = 'inline-flex';
+       stopBtn.disabled = false;
+       
+       setStatus('running', 'Running test...');
+       clearOutput();
+
+       appendOutput(`Starting: ${jmxPath}`);
+       appendOutput(`Threads: ${threads}, Ramp-up: ${ramp}s`);
+
+       try {
+         const res = await fetch('/run-jmeter', {
+           method: 'POST',
+           headers: { 'Content-Type': 'application/json' },
+           body: JSON.stringify({ jmxPath, threads, ramp, extraArgs })
+         });
+
+         const text = await res.text();
+         appendOutput(text);
+         setStatus('success', 'Test Completed');
+         loadData(); // Update stats
+       } catch (err) {
+         appendOutput(`<span style="color: var(--danger)">Error: ${err.message}</span>`);
+         setStatus('error', 'Failed');
+       } finally {
+         isRunning = false;
+         runBtn.style.display = 'inline-flex';
+         runBtn.disabled = false;
+         runBtn.innerHTML = '<i class="fas fa-play"></i> Run Test';
+         stopBtn.style.display = 'none';
+       }
+     }
+
+    // Stop test
+    async function stopTest() {
+      if (!isRunning) return;
+
+      try {
+        const res = await fetch('/stop-jmeter', { method: 'POST' });
+        const data = await res.json();
+        
+        if (data.success) {
+          appendOutput('<span style="color: var(--warning)">[Stopping test...]</span>');
+        } else {
+          showToast(data.message || 'Failed to stop test', 'error');
+        }
+      } catch (err) {
+        showToast('Network error while stopping', 'error');
+      }
+      // The runTest() finally block will handle resetting buttons when response arrives
+    }
+
+    function appendOutput(text) {
+      const output = document.getElementById('output');
+      const time = new Date().toLocaleTimeString();
+      output.innerHTML += `<div class="output-line"><span class="timestamp">[${time}]</span> ${text}</div>`;
+      output.scrollTop = output.scrollHeight;
+    }
+
+    function clearOutput() {
+      document.getElementById('output').innerHTML = '';
+    }
+
+    function copyOutput() {
+      const text = document.getElementById('output').innerText;
+      navigator.clipboard.writeText(text);
+      showToast('Copied to clipboard', 'success');
+    }
+
+    function setStatus(type, msg) {
+      const badge = document.getElementById('status-badge');
+      badge.className = `status-badge status-${type}`;
+      badge.textContent = msg;
+    }
+
+    function showToast(message, type = 'info') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = `toast ${type}`;
+      
+      const icon = type === 'success' ? 'check-circle' : 
+                   type === 'error' ? 'exclamation-circle' : 
+                   'info-circle';
+      
+      toast.innerHTML = `
+        <i class="fas fa-${icon}"></i>
+        <span>${message}</span>
+      `;
+      
+      container.appendChild(toast);
+      
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    }
+
+    // Project CRUD
+    function openCreateProjectModal() {
+      document.getElementById('create-project-modal').classList.add('active');
+      document.getElementById('project-name').focus();
+    }
+
+    async function createProject() {
+      const name = document.getElementById('project-name').value.trim();
+      const desc = document.getElementById('project-desc').value.trim();
+
+      if (!name) {
+        showToast('Project name is required', 'error');
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/projects', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, description: desc })
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          showToast(`Project "${name}" created`, 'success');
+          closeModal('create-project-modal');
+          document.getElementById('project-name').value = '';
+          document.getElementById('project-desc').value = '';
+          loadData();
+        } else {
+          showToast(data.error || 'Failed to create project', 'error');
+        }
+      } catch (err) {
+        showToast('Network error', 'error');
+      }
+    }
+
+    function deleteProject(projectId) {
+      deleteTarget = { type: 'project', id: projectId };
+      const project = projects.find(p => p.id === projectId);
+      document.getElementById('delete-message').innerHTML = 
+        `Delete project "<strong>${project.name}</strong>" and all its tests?`;
+      document.getElementById('delete-modal').classList.add('active');
+    }
+
+    function deleteFile(filePath, event) {
+      event.stopPropagation();
+      if (!confirm('Delete this test file?')) return;
+
+      const parts = filePath.split('/');
+      const projectId = parts[0];
+      const filename = parts.slice(2).join('/'); // Skip 'projects/' and projectId
+
+      fetch(`/api/projects/${projectId}/tests/${encodeURIComponent(filename)}`, {
+        method: 'DELETE'
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          showToast('File deleted', 'success');
+          loadFiles(currentDir);
+          loadData();
+        } else {
+          showToast(data.error || 'Failed to delete', 'error');
+        }
+      })
+      .catch(() => showToast('Network error', 'error'));
+    }
+
+    async function confirmDelete() {
+      if (!deleteTarget) return;
+
+      try {
+        let res;
+        if (deleteTarget.type === 'project') {
+          res = await fetch(`/api/projects/${deleteTarget.id}`, { method: 'DELETE' });
+        }
+
+        const data = await res.json();
+
+        if (res.ok) {
+          showToast('Deleted successfully', 'success');
+          closeModal('delete-modal');
+          loadData();
+          if (currentProject?.id === deleteTarget.id) {
+            currentProject = null;
+            document.getElementById('runner-page').classList.add('hidden');
+            document.getElementById('landing-page').classList.remove('hidden');
+          }
+        } else {
+          showToast(data.error || 'Delete failed', 'error');
+        }
+      } catch (err) {
+        showToast('Network error', 'error');
+      } finally {
+        deleteTarget = null;
+      }
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.remove('active');
+    }
+
+    function refreshProjects() {
+      loadData();
+    }
+
+    function openConfigModal() {
+      // Load current config
+      Promise.all([
+        fetch('/api/config'),
+        fetch('/health')
+      ]).then(([configRes, healthRes]) => Promise.all([configRes.json(), healthRes.json()]))
+        .then(([config, health]) => {
+          document.getElementById('jmeter-path').value = config.effectiveJMETER_PATH || 'jmeter';
+          document.getElementById('jmeter-options').value = config.effectiveJMETER_OPTIONS || '';
+          
+          const statusEl = document.getElementById('jmeter-status');
+          if (health.jmeterAvailable) {
+            statusEl.innerHTML = `<span class="success"><i class="fas fa-check-circle"></i> JMeter found: ${health.version || 'Available'}</span>`;
+          } else {
+            statusEl.innerHTML = `<span class="error"><i class="fas fa-times-circle"></i> JMeter not found. Configure the path below.</span>`;
+          }
+
+          // Store original values to detect changes
+          document.getElementById('config-modal').dataset.originalPath = config.effectiveJMETER_PATH || '';
+          document.getElementById('config-modal').dataset.originalOptions = config.effectiveJMETER_OPTIONS || '';
+        })
+        .catch(err => {
+          console.error('Failed to load config:', err);
+          document.getElementById('jmeter-status').innerHTML = 
+            '<span class="error"><i class="fas fa-times-circle"></i> Unable to check JMeter status</span>';
+        });
+
+      document.getElementById('config-modal').classList.add('active');
+    }
+
+    function saveConfig() {
+      const jmeterPath = document.getElementById('jmeter-path').value.trim();
+      const jmeterOptions = document.getElementById('jmeter-options').value.trim();
+
+      fetch('/api/config', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ jmeterPath, jmeterOptions })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          showToast('Configuration saved!', 'success');
+          // Don't close modal - show restart option
+          
+          // Check if path/options changed
+          const originalPath = document.getElementById('config-modal').dataset.originalPath;
+          const originalOptions = document.getElementById('config-modal').dataset.originalOptions;
+          
+          if (jmeterPath !== originalPath || jmeterOptions !== originalOptions) {
+            // Show restart notice and button
+            document.getElementById('restart-notice').classList.remove('hidden');
+            document.getElementById('restart-btn').style.display = 'inline-flex';
+            showToast('Restart required to apply changes', 'warning');
+          } else {
+            closeModal('config-modal');
+          }
+        } else {
+          showToast(data.error || 'Failed to save config', 'error');
+        }
+      })
+      .catch(err => {
+        showToast('Network error saving config', 'error');
+      });
+    }
+
+    function attemptRestart() {
+      if (!confirm('Restart the server now? Any running tests will be interrupted.')) {
+        return;
+      }
+
+      const btn = document.getElementById('restart-btn');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Restarting...';
+      
+      showToast('Restarting server...', 'info');
+      closeModal('config-modal');
+      
+      fetch('/api/restart', { method: 'POST' })
+        .then(res => {
+          if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+          return res.json();
+        })
+        .then(data => {
+          if (data.success) {
+            showToast('Server restarting... Waiting for it to come back up.', 'success');
+            // Poll for server to come back
+            let attempts = 0;
+            const maxAttempts = 15; // ~30 seconds
+            const interval = setInterval(() => {
+              attempts++;
+              fetch('/health', { cache: 'no-cache' })
+                .then(r => r.json())
+                .then(h => {
+                  if (h.status === 'ok' || h.jmeterAvailable !== false) {
+                    clearInterval(interval);
+                    showToast('Server is back online! Reloading...', 'success');
+                    setTimeout(() => window.location.reload(), 1500);
+                  } else if (attempts >= maxAttempts) {
+                    clearInterval(interval);
+                    showToast('Server restarted but JMeter still not detected.', 'error');
+                    // Show manual restart needed
+                    setTimeout(() => {
+                      alert('Server restarted but JMeter configuration may still be incorrect.\n\n' +
+                            'Please check:\n' +
+                            '1. JMeter path is correct in Settings\n' +
+                            '2. JMeter is actually installed at that location\n' +
+                            '3. Java is installed (jmeter -v in terminal)');
+                    }, 500);
+                  } else if (attempts % 3 === 0) {
+                    showToast(`Waiting for server... (attempt ${attempts}/${maxAttempts})`, 'info');
+                  }
+                })
+                .catch(() => {
+                  if (attempts >= maxAttempts) {
+                    clearInterval(interval);
+                    showToast('Server did not respond. Please check manually.', 'error');
+                    // Show manual instructions
+                    const manualDiv = document.getElementById('manual-restart');
+                    if (manualDiv) manualDiv.classList.remove('hidden');
+                  }
+                });
+            }, 2000);
+          }
+        })
+        .catch(err => {
+          console.error('Restart error:', err);
+          showToast('Failed to trigger restart. Please restart manually.', 'error');
+          // Show manual instructions in modal
+          document.getElementById('manual-restart').classList.remove('hidden');
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fas fa-redo"></i> Restart Now';
+          // Re-open modal if closed
+          document.getElementById('config-modal').classList.add('active');
+        });
+    }
+
+    function copyManualInstructions() {
+      const text = `Manual Restart Steps:
+1. Go to the terminal window where you ran "npm start"
+2. Press Ctrl+C to stop the server
+3. Run: npm start
+4. Refresh this page (F5)`;
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('Instructions copied to clipboard', 'success');
+      });
+    }
+
+    function openUploadModal(projectId) {
+      // Switch to project first
+      openProject(projectId);
+      // Focus upload area
+      document.getElementById('file-input').click();
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      checkJMeter();
+      loadData();
+    });
+
+    async function checkJMeter() {
+      try {
+        const res = await fetch('/health');
+        const data = await res.json();
+        
+        if (!data.jmeterAvailable) {
+          document.getElementById('jmeter-warning').classList.remove('hidden');
+        }
+      } catch (err) {
+        console.error('Health check failed:', err);
+      }
+    }
+
+    // Close modal on overlay click
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+          overlay.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
