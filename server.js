@@ -175,37 +175,6 @@ app.get("/test-status", (req, res) => {
   }
 });
 
-  setTimeout(() => {
-    console.log('[API] Executing restart...');
-    
-    try {
-      const { spawn } = require('child_process');
-      const restartScript = path.join(__dirname, 'restart.js');
-      
-      const child = spawn('node', [restartScript], {
-        detached: true,
-        stdio: 'ignore',
-        cwd: __dirname
-      });
-      
-      child.unref();
-      console.log('[API] Restart process spawned');
-      
-      // Clean up PID file
-      try { 
-        if (fs.existsSync(pidFile)) {
-          fs.unlinkSync(pidFile);
-        }
-      } catch (e) {}
-      
-      process.exit(0);
-    } catch (err) {
-      console.error('[API] Restart error:', err.message);
-      process.exit(0);
-    }
-  }, 1000);
-});
-
 /* -----------------------------
    Health check - also verifies JMeter
 -----------------------------*/
