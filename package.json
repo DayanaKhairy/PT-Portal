@@ -2,8 +2,7 @@
   "name": "jmeter-web-runner",
   "version": "2.0.0",
   "description": "Web-based JMeter test runner with project management",
-  "main": "server.js",
-  "type": "commonjs",
+"main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js"
