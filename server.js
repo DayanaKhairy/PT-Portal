@@ -45,24 +45,6 @@ function saveConfig(config) {
 const config = loadConfig();
 let JMETER_PATH = process.env.JMETER_PATH || config.jmeterPath || 
                   (process.platform === 'win32' ? 'jmeter' : 'jmeter');
-                  // Auto-detect local JMeter if not found (for Render deployment)
-if (!fs.existsSync(JMETER_PATH)) {
-  try {
-    const files = fs.readdirSync(__dirname);
-    const jmeterDir = files.find(f => 
-      f.startsWith('apache-jmeter-') && 
-      fs.statSync(path.join(__dirname, f)).isDirectory()
-    );
-
-    if (jmeterDir) {
-      const exeName = process.platform === 'win32' ? 'jmeter.bat' : 'jmeter';
-      JMETER_PATH = path.join(__dirname, jmeterDir, 'bin', exeName);
-      console.log(`[Config] Auto-detected local JMeter: ${JMETER_PATH}`);
-    }
-  } catch (e) {
-    // No local JMeter found
-  }
-}
 const JMETER_OPTIONS = process.env.JMETER_OPTIONS || config.jmeterOptions || '';
 
 // Normalize JMeter path: if it's a directory, append jmeter.bat (Windows) or jmeter (Unix)
@@ -494,7 +476,7 @@ app.get("/api/stats", (req, res) => {
 /* -----------------------------
    Start server
 -----------------------------*/
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // Write PID file
 try {
