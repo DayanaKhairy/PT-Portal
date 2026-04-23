@@ -1,0 +1,45 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1776904694996,2283,T01_Login,200,"Number of samples in transaction : 1, number of failing samples : 0",Virtual Student 1-1,,true,,2881,348,1,1,null,0,1077,1685
+1776904695095,2283,POST API Login,200,OK,Virtual Student 1-1,text,true,,2881,348,1,1,https://ilmu-dev.tmrnd.dev/usermgmt/v1/auth/token,2282,0,1685
+1776904698358,3517,T02_Learning_Assessment,200,"Number of samples in transaction : 5, number of failing samples : 0",Virtual Student 1-1,,true,,65915,10124,1,1,null,0,687,0
+1776904698360,463,GET Learning Assessment Page/API,200,OK,Virtual Student 1-1,text,true,,723,2032,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/user-questionnaires/status/PERSONALIZED_LEARNING_V1,463,0,0
+1776904698824,457,GET Questionnaire Page,200,OK,Virtual Student 1-1,text,true,,2637,2016,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/questionnaires/1,457,0,0
+1776904699626,475,POST User Questionnaire Session ID,200,OK,Virtual Student 1-1,text,true,,638,2055,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/user-questionnaires/start,475,0,0
+1776904700158,447,GET newUserQuestionnaire Page,200,OK,Virtual Student 1-1,text,true,,650,2005,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/user-questionnaires/1186,447,0,0
+1776904700656,1675,GET All Questions,200,OK,Virtual Student 1-1,text,true,,61267,2016,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/questionnaires/1/questions?limit=26,697,0,0
+1776904702563,18038,T03_Learning_Space,200,"Number of samples in transaction : 10, number of failing samples : 0",Virtual Student 1-1,,true,,243955,71846,1,1,null,0,173,0
+1776904702564,464,GET Subscription Active,200,OK,Virtual Student 1-1,text,true,,2692,2088,1,1,https://ilmu-dev.tmrnd.dev/subscription/v1/user-subscriptions/me/active,464,0,0
+1776904703029,451,GET Tags By SubjectIds,200,OK,Virtual Student 1-1,text,true,,713,2102,1,1,"https://ilmu-dev.tmrnd.dev/learning/v1/learning-resources/tags?subjectIds=2,14,15,6,7",451,0,0
+1776904703481,455,GET Textbook Learning Resources,200,OK,Virtual Student 1-1,text,true,,1463,2137,1,1,"https://ilmu-dev.tmrnd.dev/learning/v1/learning-resources?resourceType=TEXTBOOK&subjectIds=2,14,15,6,7&limit=12&offset=0",454,0,0
+1776904703936,1322,GET Navigate TextBook,200,OK,Virtual Student 1-1,text,true,,53076,2087,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/textbooks/courses/14/navigation,829,0,0
+1776904705261,462,GET Navigate TextBook,200,OK,Virtual Student 1-1,text,true,,1395,2082,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/textbooks/691/page-content,462,0,0
+1776904705724,511,GET Learning Study Notes,200,OK,Virtual Student 1-1,text,true,,14205,2140,1,1,"https://ilmu-dev.tmrnd.dev/learning/v1/learning-resources?resourceType=STUDY_NOTES&subjectIds=2,14,15,6,7&limit=12&offset=0",477,0,0
+1776904706236,783,GET Study Notes Details,200,OK,Virtual Student 1-1,text,true,,44568,2079,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/study-notes/3283/detail,490,0,0
+1776904707021,484,GET Flashcards,200,OK,Virtual Student 1-1,text,true,,9984,2139,1,1,"https://ilmu-dev.tmrnd.dev/learning/v1/learning-resources?resourceType=FLASHCARDS&subjectIds=2,14,15,6,7&limit=12&offset=0",464,0,0
+1776904707506,480,GET Quiz,200,OK,Virtual Student 1-1,text,true,,9608,2133,1,1,"https://ilmu-dev.tmrnd.dev/learning/v1/learning-resources?resourceType=QUIZ&subjectIds=2,14,15,6,7&limit=12&offset=0",467,0,0
+1776904707987,12626,T03A_Navigate_Quiz_And_Answer_10Q,200,"Number of samples in transaction : 25, number of failing samples : 0",Virtual Student 1-1,,true,,106251,52859,1,1,null,0,162,0
+1776904707988,1127,GET Quiz Detail 2808,200,OK,Virtual Student 1-1,text,true,,66630,2075,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/detail,663,0,0
+1776904709116,459,GET Quiz 2808,200,OK,Virtual Student 1-1,text,true,,1350,2068,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808,459,0,0
+1776904709575,468,POST Start Quiz Attempt 2808,200,OK,Virtual Student 1-1,text,true,,566,2097,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/attempts,467,0,0
+1776904710093,446,GET Quiz Item 1826,200,OK,Virtual Student 1-1,text,true,,1232,2079,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/items/1826,446,0,0
+1776904710602,453,POST Quiz Answer 1826,200,OK,Virtual Student 1-1,text,true,,979,2164,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/attempts/609/items/1826/answer,453,0,0
+1776904711056,454,GET Quiz Item 1827,200,OK,Virtual Student 1-1,text,true,,1304,2079,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/items/1827,454,0,0
+1776904711513,457,POST Quiz Answer 1827,200,OK,Virtual Student 1-1,text,true,,998,2164,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/attempts/609/items/1827/answer,457,0,0
+1776904711971,464,GET Quiz Item 1828,200,OK,Virtual Student 1-1,text,true,,1643,2079,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/items/1828,464,0,0
+1776904712437,461,POST Quiz Answer 1828,200,OK,Virtual Student 1-1,text,true,,965,2164,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/attempts/609/items/1828/answer,461,0,0
+1776904712899,454,GET Quiz Item 1829,200,OK,Virtual Student 1-1,text,true,,1395,2079,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/items/1829,454,0,0
+1776904713355,458,POST Quiz Answer 1829,200,OK,Virtual Student 1-1,text,true,,929,2164,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/attempts/609/items/1829/answer,458,0,0
+1776904713815,460,GET Quiz Item 1830,200,OK,Virtual Student 1-1,text,true,,1138,2079,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/items/1830,460,0,0
+1776904714277,466,POST Quiz Answer 1830,200,OK,Virtual Student 1-1,text,true,,956,2164,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/attempts/609/items/1830/answer,466,0,0
+1776904714743,449,GET Quiz Item 1831,200,OK,Virtual Student 1-1,text,true,,1446,2079,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/items/1831,449,0,0
+1776904715195,471,POST Quiz Answer 1831,200,OK,Virtual Student 1-1,text,true,,979,2164,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/attempts/609/items/1831/answer,471,0,0
+1776904715667,443,GET Quiz Item 1832,200,OK,Virtual Student 1-1,text,true,,1147,2079,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/items/1832,443,0,0
+1776904716112,462,POST Quiz Answer 1832,200,OK,Virtual Student 1-1,text,true,,982,2164,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/attempts/609/items/1832/answer,462,0,0
+1776904716575,459,GET Quiz Item 1833,200,OK,Virtual Student 1-1,text,true,,1283,2079,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/items/1833,459,0,0
+1776904717035,460,POST Quiz Answer 1833,200,OK,Virtual Student 1-1,text,true,,930,2164,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/attempts/609/items/1833/answer,460,0,0
+1776904717496,696,GET Quiz Item 1834,200,OK,Virtual Student 1-1,text,true,,1177,2079,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/items/1834,696,0,0
+1776904718195,466,POST Quiz Answer 1834,200,OK,Virtual Student 1-1,text,true,,963,2164,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/attempts/609/items/1834/answer,466,0,0
+1776904718662,461,GET Quiz Item 1835,200,OK,Virtual Student 1-1,text,true,,1351,2079,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/items/1835,461,0,0
+1776904719125,465,POST Quiz Answer 1835,200,OK,Virtual Student 1-1,text,true,,1004,2164,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/attempts/609/items/1835/answer,465,0,0
+1776904719591,500,POST Submit Quiz Attempt 609,200,OK,Virtual Student 1-1,text,true,,612,2108,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/attempts/609/submit,500,0,0
+1776904720107,667,GET Quiz Attempt Result 609,200,OK,Virtual Student 1-1,text,true,,14292,2081,1,1,https://ilmu-dev.tmrnd.dev/learning/v1/quizzes/2808/attempts/609,464,0,0
